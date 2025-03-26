@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     text: {
         flex: 1,
         alignSelf: 'center',
-        marginTop: 130,
+        marginTop: 90,
         fontSize: 50,
     },
     input: {
