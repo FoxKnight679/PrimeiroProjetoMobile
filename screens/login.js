@@ -9,8 +9,6 @@ export function Login({navigation}) {
             <View>
                 <Text style={styles.text}>Crossgamers</Text>
             </View>
-            <MaterialIcons name='login' size={40} color={"#ff0000"}/>
-            <MaterialIcons name='home' size={40} color={"#ff0000"}/>
             <View>
                 <TextInput
                 style = {styles.input}
@@ -23,7 +21,7 @@ export function Login({navigation}) {
             </View>
             <View style = {styles.button}>
             <Button title="LOGIN" color= '#450' 
-            onPress={() => navigation.navigate("Home")}/>
+            onPress={() => navigation.navigate("HomeTab")}/>
             </View>
         </View>
     )
@@ -54,6 +52,6 @@ const styles = StyleSheet.create({
     },
     button: {
         margin: 90,
-        marginTop: 110
+        marginTop: 110,
     }
 })

@@ -7,40 +7,57 @@ import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Home } from './screens/home';
 import { Login } from './screens/login';
-
+import { Feed } from './screens/feed';
+import { Counter } from './screens/counter';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
-export default function App() {
-
+function BottomTabs(){
   const Tabs = createBottomTabNavigator();
 
   return (
+    <Tabs.Navigator initialRouteName='Home' screenOptions={{
+      tabBarActiveTintColor: "#FF0000", tabBarActiveBackgroundColor: "#3d9123", tabBarInactiveBackgroundColor: "#a7cfb2", tabBarInactiveTintColor: "#675280", headerStyle: {
+        backgroundColor: "#3d9123"},
+      headerTintColor: "#530696",
+      //headerTitleAlign: "center"
+    }}>
+      <Tabs.Screen name='Home' component={Home}          
+      options={{
+        tabBarIcon: () => (
+          <MaterialIcons name='home' size={30} color={'#ff0000'}/>
+        ),
+      }}/>
+      <Tabs.Screen name='Feed' component={Feed}          
+      options={{
+        tabBarIcon: () => (
+          <MaterialIcons name='feed' size={30} color={'#ff0000'}/>
+        ),
+      }}/>
+      <Tabs.Screen name='Counter' component={Counter}          
+      options={{
+        tabBarIcon: () => (
+          <MaterialCommunityIcons name="counter" size={30} color={'#ff0000'} />
+        ),
+      }}/>
+    </Tabs.Navigator>
+  )
+}
+
+export default function App() {
+  const Stack = createStackNavigator();
+
+  return (
     <NavigationContainer>
-      <Tabs.Navigator initialRouteName='Home' screenOptions={{
-        tabBarActiveTintColor: "#FF0000", tabBarActiveBackgroundColor: "#4fdb74", tabBarInactiveBackgroundColor: "#a7cfb2", tabBarInactiveTintColor: "#675280", headerStyle: {
-          backgroundColor: "#890"},
-        headerTintColor: "#1e7004",
-        //headerTitleAlign: "center"
-      }}>
-        <Tabs.Screen name='Login' component={Login}
-         options={{
-          tabBarIcon: () => (
-            <MaterialIcons name='login' size={30} color={'#ff0000'}/>
-          ),
-        }}/>
-        <Tabs.Screen name='Home' component={Home}          
-        options={{
-          tabBarIcon: () => (
-            <MaterialIcons name='home' size={30} color={'#ff0000'}/>
-          ),
-        }}/>
-      </Tabs.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen options = {{headerShown:false}}name='HomeTab' component={BottomTabs}/>
+      </Stack.Navigator>
     </NavigationContainer>
-
-
 
 
 

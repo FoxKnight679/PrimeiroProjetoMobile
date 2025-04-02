@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
     text1: {
         flex: 1, //Coloca o tamanho que a view vai precisar, é como se fosse o DIV de html
         padding: 30, //margem de todos os lados
-        color: '#191970'
     },
     imgs: {
         flex: 3,
@@ -52,12 +51,10 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         marginLeft: 210,
         marginRight: 10,
-        color: '#191970'
     },
     text3: {
         flex: 1,
         alignSelf: 'center',
-        color: '#191970',
     },
 
 })
