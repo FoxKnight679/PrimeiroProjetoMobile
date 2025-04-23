@@ -12,9 +12,11 @@ import { Home } from './screens/home';
 import { Login } from './screens/login';
 import { Feed } from './screens/feed';
 import { Counter } from './screens/counter';
+import Product from './screens/products';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Entypo from '@expo/vector-icons/Entypo';
 
 function BottomTabs(){
   const Tabs = createBottomTabNavigator();
@@ -44,6 +46,12 @@ function BottomTabs(){
           <MaterialCommunityIcons name="counter" size={30} color={'#ff0000'} />
         ),
       }}/>
+      <Tabs.Screen name='Product' component={Product}          
+      options={{
+        tabBarIcon: () => (
+          <Entypo name="shopping-cart" size={30} color={'#ff0000'}  />
+        ),
+      }}/>
     </Tabs.Navigator>
   )
 }
@@ -53,7 +61,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator >
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen options = {{headerShown:false}}name='HomeTab' component={BottomTabs}/>
       </Stack.Navigator>
