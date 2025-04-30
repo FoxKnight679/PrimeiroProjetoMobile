@@ -1,29 +1,30 @@
-import {Text, View, StyleSheet, Button, TextInput} from 'react-native';
 import { useState } from "react";
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../controller';
+import { View, Text, StyleSheet, Button, TextInput, TouchableOpacity } from "react-native";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../controller";
 
-export function Login({navigation}) {
+export function Cadastro({navigation}) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
-    const VerifyUser = () => {
-        signInWithEmailAndPassword(auth, email, senha)
-        .then(userCredential => {
-            console.log('Usuário logado com sucesso', userCredential.user.email);
-            navigation.navigate('HomeTab')
-        })
-        .catch((error) => {
-            console.log('Erro ao logar', error.message);
-        });
+    const cadastroUser = () => {
+        createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential) => {
+            console.log('cadastrado!', userCredential.user.email);
+            navigation.navigate('Login')
+          })
+          .catch((error) => {
+            console.log('erro', error.message)
+          });
     }
-    
+
     return (
-        <View style={styles.Login}>
+        <View style={styles.cadastro}>
             <View>
-                <Text style={styles.text}>Crossgamers</Text>
+                <Text style={styles.text}>Cadastro</Text>
             </View>
+
             <View>
                 <TextInput 
                 style = {styles.input}
@@ -40,12 +41,16 @@ export function Login({navigation}) {
                 onChangeText={setSenha}
                 secureTextEntry = {true}/>
             </View>
-            <View style = {styles.button}>
-            <Button title="CADASTRAR-SE" color= '#450' 
-            onPress={() => navigation.navigate("Cadastro")}/>
 
-            <Button title="ENTRAR" color= '#450' 
-            onPress={VerifyUser}/>
+            <View style = {styles.button}>
+            <Button title="CADASTRAR" color= '#450' 
+            onPress={cadastroUser}/>
+            </View>
+
+            <View>
+                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                    <Text style = {styles.link}>Já tem uma conta? faça login aqui!</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -54,7 +59,7 @@ export function Login({navigation}) {
 
 const styles = StyleSheet.create({
 
-    Login: {
+    cadastro: {
         flex: 1,
         backgroundColor: "#890"
     },
@@ -77,5 +82,12 @@ const styles = StyleSheet.create({
     button: {
         margin: 90,
         marginTop: 110,
+    },
+    link: { 
+        alignSelf: 'center',
+        fontSize: 19,
+        textDecorationLine: 'underline',
+        color: "#2a024d",
+        fontWeight: 'bold'
     }
 })

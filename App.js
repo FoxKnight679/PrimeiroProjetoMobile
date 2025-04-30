@@ -13,6 +13,7 @@ import { Login } from './screens/login';
 import { Feed } from './screens/feed';
 import { Counter } from './screens/counter';
 import Product from './screens/products';
+import { Cadastro } from './screens/cadastro';
 
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -63,6 +64,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator >
         <Stack.Screen name='Login' component={Login} />
+        <Stack.Screen options = {{headerShown:false}} name='Cadastro' component={Cadastro} />
         <Stack.Screen options = {{headerShown:false}}name='HomeTab' component={BottomTabs}/>
       </Stack.Navigator>
     </NavigationContainer>
