@@ -10,11 +10,11 @@ export function Cadastro({navigation}) {
 
     const cadastroUser = () => {
         createUserWithEmailAndPassword(auth, email, senha)
-        .then((userCredential) => {
-            console.log('cadastrado!', userCredential.user.email);
+        .then((userCredential) => { //verifica se oq ta escrito segue os padroes do firebase
+            console.log('cadastrado!', userCredential.user.email); //aqui dentro vai as açoes que quer q ele faça caso siga os padroes do firebase
             navigation.navigate('Login')
           })
-          .catch((error) => {
+          .catch((error) => { //se n atendeu aos critérios vem pra cá
             console.log('erro', error.message)
           });
     }

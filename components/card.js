@@ -6,7 +6,7 @@ export default function Card({nome, valor, imagem}) {
             <Image style = {styles.img} source={{uri: imagem}}/>
             <View style = {styles.textBox}>
                 <Text style = {styles.productText}>{nome}</Text>
-                <Text style = {styles.productText}>{valor}</Text>
+                <Text style = {styles.productText}>R$ {valor}</Text>
             </View>
         </View>
     );

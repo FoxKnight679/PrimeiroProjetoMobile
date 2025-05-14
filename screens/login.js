@@ -1,4 +1,4 @@
-import {Text, View, StyleSheet, Button, TextInput} from 'react-native';
+import {Text, View, StyleSheet, Button, TextInput, TouchableOpacity} from 'react-native';
 import { useState } from "react";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../controller';
@@ -40,9 +40,12 @@ export function Login({navigation}) {
                 onChangeText={setSenha}
                 secureTextEntry = {true}/>
             </View>
-            <View style = {styles.button}>
-            <Button title="CADASTRAR-SE" color= '#450' 
-            onPress={() => navigation.navigate("Cadastro")}/>
+            <View style = {styles.buttons}>
+            <View>
+                <TouchableOpacity onPress={() => navigation.navigate("Cadastro")}>
+                    <Text style = {styles.link}>Cadastre-se aqui!</Text>
+                </TouchableOpacity>
+            </View>
 
             <Button title="ENTRAR" color= '#450' 
             onPress={VerifyUser}/>
@@ -74,8 +77,17 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
     },
-    button: {
+    buttons: {
         margin: 90,
         marginTop: 110,
+        height: 110,
+        justifyContent: 'space-between'
+    },
+    link: { 
+        alignSelf: 'center',
+        fontSize: 20,
+        textDecorationLine: 'underline',
+        color: "#2a024d",
+        fontWeight: 'bold'
     }
 })
