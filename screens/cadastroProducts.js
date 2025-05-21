@@ -7,18 +7,18 @@ export function AddProducts({navigation}) {
 
     const [nome, setNome] = useState("");
     const [valor, setValor] = useState("");
-    const [image, setImage] = useState("");
+    const [imagem, setImagem] = useState("");
 
     const CadastrarProduto = async () => {
         try {
             await addDoc(collection(bd, 'produtos'), {
                 nome,
                 valor: parseFloat(valor),
-                image,
+                imagem,
             });
             setNome(''),
             setValor(''),
-            setImage('');
+            setImagem('');
         }
         catch (error) {
             console.log("Não foi possível cadastrar a porcaria do produto, certeza que foi um produto de qualidade ruim, o problema não é do código", error)
@@ -47,8 +47,8 @@ export function AddProducts({navigation}) {
                 style = {styles.input}
                 placeholder="Imagem do produto"
                 placeholderTextColor={"#4a5e49"}                
-                value={image}
-                onChangeText={setImage}/>
+                value={imagem}
+                onChangeText={setImagem}/>
             </View>
             <View>
                 <TouchableOpacity onPress= {CadastrarProduto}>
@@ -85,7 +85,6 @@ const styles = StyleSheet.create ({
     link: { 
         alignSelf: 'center',
         fontSize: 20,
-        textDecorationLine: 'underline',
         color: "#2a024d",
         fontWeight: 'bold'
     }

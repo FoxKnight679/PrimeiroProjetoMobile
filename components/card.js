@@ -1,12 +1,13 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Button } from "react-native";
 
-export default function Card({nome, valor, imagem}) {
+export default function Card({nome, valor, imagem, comprar}) {
     return (
         <View style = {styles.card}>
             <Image style = {styles.img} source={{uri: imagem}}/>
             <View style = {styles.textBox}>
                 <Text style = {styles.productText}>{nome}</Text>
                 <Text style = {styles.productText}>R$ {valor}</Text>
+                <Button color = "#890" title="Comprar" onPress={comprar} />
             </View>
         </View>
     );
@@ -15,7 +16,7 @@ export default function Card({nome, valor, imagem}) {
 const styles = StyleSheet.create ({
     productText: {
         fontSize: 22,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
     },
     card: {
         padding: 10,
@@ -29,9 +30,12 @@ const styles = StyleSheet.create ({
         height: 150,
         width: 150,
         borderRadius: 5,
+        borderWidth: 4,
     },
     textBox: {
-        justifyContent: 'space-evenly',
+        height: 120,
+        width: 180,
+        justifyContent: 'space-between',
         paddingLeft: 40
-    }
+    },
 })

@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import Card from "../components/card";
 import { bd } from "../controller";
 import { collection, getDocs } from "firebase/firestore";
+import { UseCarrinho } from "../components/providerCart";''
 
 
-export default function Product() {
+export default function Product({navigation}) {
     const[produtos, setProdutos] = useState([]);
+    const {adicionarProduto} = UseCarrinho();
 
         useEffect(() => {
             async function carregarProdutos() {
@@ -36,6 +38,10 @@ export default function Product() {
                         nome = {item.nome}
                         valor = {item.valor}
                         imagem = {item.imagem}
+                        comprar = {() => {
+                            adicionarProduto(item);
+                            //navigation.navigate('carrinho');
+                        }}
                     />
                 )}
                 keyExtractor = {item => item.id}
